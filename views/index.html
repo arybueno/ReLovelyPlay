@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina Inicial</title>
+
+  <!-- CSS vindo do public -->
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body>
+
+  <!-- Player de música -->
+  <iframe id="musicFrame" src="/player" style="display:none;" allow="autoplay"></iframe>
+  
+  <img id="gameboyIntro" class="gameboy" src="/img/gameboy.png">
+
+  <div id="conteudoSite" style="display: none;">
+      <div id="header-placeholder"></div>
+
+      <main>
+        <h1 class="page-title">Escolha seu jogo</h1>
+
+        <div class="jogos">
+          <div id="listaJogos"></div>
+        </div>
+      </main>
+  </div>
+
+  <!-- JS vindo do public -->
+  <script type="module" src="/firebase-init.js"></script>
+  <script type="module" src="/index.js"></script>
+  <script type="module" src="/jogos.js"></script>
+  <script type="module" src="/music.js"></script>
+  <script src="/componentes/header.js"></script>
+
+</body>
+</html>

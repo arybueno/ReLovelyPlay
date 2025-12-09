@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Campo dos Gatos</title>
+  <link rel="stylesheet" href="wepper.css">
+</head>
+<body>
+  <div class="btn-voltar">
+      <button class="voltar" onclick="window.location.href='/'">
+      <img src="/img/button-home.png" alt="">
+    </button>
+</div>
+  <div class="top-bar">
+  </div>
+
+  <div class="painel">
+    <span>Gatos: <span id="gatos-restantes">0</span></span>
+    <span>Tempo: <span id="tempo">0s</span></span>
+
+    <select id="dificuldade">
+      <option value="facil">Fácil</option>
+      <option value="medio">Médio</option>
+      <option value="dificil">Difícil</option>
+    </select>
+
+    <button id="recomecar"> <img src="/img/button-restart.png" alt=""></button>
+  </div>
+
+  <div class="area-marrom">
+  <div id="tabuleiro"></div>
+</div>
+
+
+  <div id="popup" class="popup hidden">
+  <div class="popup-card">
+    <img id="popup-img" class="popup-img">
+    <h2 id="popup-title"></h2>
+    <p id="popup-msg"></p>
+    <button id="popup-btn"><img src="/img/button-ok.png" alt=""></button>
+  </div>
+</div>
+
+<button id="btn-marcador" class="btn-marcador">
+  <img src="/img/placeholder-fish.png" alt="Marcador" />
+</button>
+
+
+
+  <script type="module" src="/firebase-init.js"></script>
+  <script type="module" src="./wepper.js"></script>
+   <script type="module" src="./select.js"></script>
+
+</body>
+</html>

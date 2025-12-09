@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Escolher Gatinho</title>
+  <link rel="stylesheet" href="selectr.css">
+</head>
+<body>
+<div class="titulo">
+<h1>Escolha seu Gatinho </h1>
+</div>
+
+<div class="container-gatos">
+  <img src="/img/placeholder-blackcat.png" class="opcao-gato" data-id="gato1">
+  <img src="/img/placeholder-gingercat.png" class="opcao-gato" data-id="gato2">
+  <img src="/img/placeholder-manchacat.png" class="opcao-gato" data-id="gato3">
+  <img src="/img/placeholder-manchinhacat.png" class="opcao-gato" data-id="gato4">
+  <img src="/img/placeholder-whitecat.png" class="opcao-gato" data-id="gato5">
+</div>
+
+
+<button onclick="confirmar()" class="btn-img">
+  <img src="/img/button-confirm.png" alt="Botão">
+</button>
+
+
+
+  <script type="module" src="/firebase-init.js"></script>
+  <script type="module" src="./wepper.js"></script>
+  <script type="module" src="./selectr.js"></script>
+</body>
+</html>

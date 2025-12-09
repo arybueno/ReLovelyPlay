@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+   <div id="header-placeholder"></div>
+
+    <main>
+  <div class="login-container">
+
+  <h2>Entrar</h2>
+  <input id="email" placeholder="Email">
+  <input id="senha" type="password" placeholder="Senha">
+  <div class="botoes-container">
+  <button class="login-btn" onclick="login()">Login</button>
+  <button class="create-btn" onclick="window.location.href='/cadastro'">Criar Conta</button>
+  </div>
+</div>
+<div id="confirmacao" class="confirmacao"></div>
+
+</main>
+
+<script type="module" src="/firebase-init.js"></script>
+<script type="module" src="./login.js"></script>
+<script src="/componentes/header.js"></script>
+
+  
+</body>
+</html>
+

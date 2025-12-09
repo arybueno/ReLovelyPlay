@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Seu Site</title>
+
+    <!-- CSS vindo da pasta public -->
+    <link rel="stylesheet" href="/componentes/header.css">
+</head>
+
+<body>
+<header>
+  <div id="teste">
+    
+    <!-- Botão voltar → agora vai para rota "/" -->
+    <button class="voltar" onclick="window.location.href='/'">
+      <img id="logo" src="/img/gameboy.png" alt="">
+    </button>
+
+    <!-- Botão do perfil -->
+    <div id="botaoPerfil" class="perfil-btn">
+      <img id="fotoPerfil" class="foto" src="" alt="">
+      <span id="nomePerfil"></span>
+    </div>
+
+  </div>
+
+  <div id="pontosUsuario" class="pontos"></div>
+
+  <!-- Botão ranking → agora rota "/ranking" -->
+  <button id="ranking-btn" onclick="window.location.href='/ranking'">
+    <img src="/img/rankingbutton.png" alt="">
+  </button>
+
+  <!-- Botão som -->
+  <button id="btnSom">
+    <img id="imgSom" src="/img/som_off.png" alt="">
+  </button>
+</header>
+
+</body>
+</html>

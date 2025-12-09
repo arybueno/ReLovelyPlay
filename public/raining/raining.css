@@ -1,0 +1,135 @@
+ @font-face {
+  font-family: "MinhaFonte";
+  src: url("/fonte/Daydream\ DEMO.otf") format("truetype");
+}
+
+html, body, * {
+  cursor: url('/img/magicwandnormal.png'), auto !important;
+}
+a:hover,
+button:hover,
+[onclick]:hover,
+.perfil-btn:hover,
+#gameboyIntro:hover,
+.card-jogo:hover,
+.jogos:hover {
+  cursor: url('/img/magicwandclick.png'), pointer !important;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: rgb(249, 255, 217)  !important;
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-position: center;
+  font-family: "MinhaFonte", sans-serif;
+  color: rgb(56, 45, 147);
+}
+
+#game {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/img/background-raining.png");
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#player {
+  width: 175px;
+  height: 85px;
+  background: url('/img/cestinha.png') center/cover;
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#item {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: -70px;
+  left: 200px;
+  object-fit: contain;     /* permite imagem sem distorcer */
+  pointer-events: none;
+}
+
+#score,
+#lives {
+  position: absolute;
+  top: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  z-index: 5;
+  color: #eaff73;
+}
+
+#score { left: 30px; }
+#lives { right: 30px; }
+
+#startScreen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(219, 215, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  z-index: 10;
+}
+
+#startButton {
+    background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#startButton img{
+  width: 170px; 
+}
+#startButton:hover {
+   transform: scale(1.05);
+}
+
+#gameContainer {
+  width: 900px;
+  height: 600px;
+  background: #5b191950; /* leve sombra atrás */
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  border: 4px solid #cfcaff;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  overflow: hidden;
+}
+
+#game {
+  width: 100%;
+  height: 100%;
+  background-image: url("/img/background-raining.png");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#player {
+  bottom: 40px;
+}
+
+#item {
+  top: -100px;
+}
+

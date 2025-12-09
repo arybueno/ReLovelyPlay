@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "MinhaFonte";
+  src: url("/fonte/Daydream DEMO.otf") format("truetype");
+}
+
+html, body, * {
+  cursor: url('/img/magicwandnormal.png'), auto !important;
+}
+
+a:hover,
+button:hover,
+[onclick]:hover,
+.perfil-btn:hover,
+#gameboyIntro:hover,
+.card-jogo:hover,
+.jogos:hover {
+  cursor: url('/img/magicwandclick.png'), pointer !important;
+}
+  
+  
+
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    background-image: url("/img/fundo.png");
+    background-size: cover;
+  background-repeat: no-repeat;
+
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #7b4685;
+    font-family: "MinhaFonte";
+    text-shadow: 0 3px #f5dfff;
+  }
+
+  #listaRanking {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: rgb(161, 69, 194);
+    padding: 30px;
+
+    border-radius: 12px;
+  }
+
+  .usuario {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgb(148, 156, 240);
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px #00000020;
+    border: 1px solid #e3e3e3;
+    font-family: "MinhaFonte";
+  }
+
+  .usuario img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .usuario span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #f3fcc1;
+    font-family: "MinhaFonte";
+  }
+
+  .pontos {
+    margin-left: auto;
+    font-weight: bold;
+    color: #555;
+    font-size: 32px;
+  }

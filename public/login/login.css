@@ -1,0 +1,160 @@
+@font-face {
+  font-family: "MinhaFonte";
+  src: url("/fonte/Daydream DEMO.otf") format("truetype");
+}
+
+html, body, * {
+  cursor: url('/img/magicwandnormal.png'), auto !important;
+}
+a:hover,
+button:hover,
+[onclick]:hover,
+.perfil-btn:hover,
+#gameboyIntro:hover,
+.card-jogo:hover,
+.jogos:hover
+.btn-upload pixel-btn:hover {
+  cursor: url('/img/magicwandclick.png'), pointer !important;
+}
+
+
+body{
+  background-image: url(/img/fundo.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  font-family: "MinhaFonte";
+}
+.login-container {
+  max-width: 400px;
+  width: 100%;
+  background: rgb(116, 133, 228);
+  border-radius: 15px;
+  padding: 30px 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  margin: 90px auto;
+}
+
+/* Títulos */
+.login-container h2 {
+  color: #deffa5;
+  margin-bottom: 25px;
+}
+
+/* Inputs */
+.login-container input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  margin-bottom: 15px;
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.login-container input:focus {
+  border-color: #888;
+}
+
+/* Botões gerais */
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: 0.2s;
+}
+
+/* Botão de login */
+.login-container button.login-btn {
+  width: 400px;
+  height: 70px;
+  background-image: url("/img/perfilbutton.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: transparent;
+  font-family: "MinhaFonte";
+  color: rgb(128, 35, 122);
+  
+}
+.botoes-container {
+  display: flex;         
+  gap: 20px;           
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+
+.login-container button.login-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Botão de criar conta */
+.login-container button.create-btn {
+  width: 400px;
+  height: 70px;
+  background-image: url("/img/pontosbutton.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: transparent;
+  font-family: "MinhaFonte";
+  color: rgb(23, 30, 97);
+  text-align: center;
+ 
+}
+
+.login-container button.create-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Botão voltar (se necessário) */
+.login-container .voltar {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #e0dfda;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+/* Mensagem de confirmação */
+.confirmacao {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(50, 50, 50, 0.9);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-family: "MinhaFonte";
+  font-size: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s, transform 0.4s;
+  z-index: 1000;
+}
+.confirmacao.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
+  pointer-events: auto;
+}
+
+
+/* Responsividade */
+@media (max-width: 450px) {
+  .login-container {
+    padding: 20px 15px;
+  }
+}

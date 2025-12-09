@@ -1,0 +1,147 @@
+/* FONTES E CURSOR                            */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+@font-face {
+  font-family: "MinhaFonte";
+  src: url("/fonte/Daydream DEMO.otf") format("truetype");
+}
+
+html, body, * {
+  cursor: url('/img/magicwandnormal.png'), auto !important;
+}
+
+a:hover,
+button:hover,
+[onclick]:hover,
+.perfil-btn:hover,
+#gameboyIntro:hover,
+.card-jogo:hover,
+.jogos:hover,
+#btnSom img:hover,
+#ranking-btn img:hover,
+.card-jogo img:hover {
+  cursor: url('/img/magicwandclick.png'), pointer !important;
+}
+
+
+/* FUNDO                                       */
+body {
+  font-family: "Inter", sans-serif;
+  background-image: url("/img/fundo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  transition: background 0.4s ease;
+}
+
+/* Fundo quando o GameBoy aparece */
+body.gameboy-bg {
+  height: 100vh;
+  background-color: rgb(165, 165, 251);
+  background-size: 100% 100%;
+}
+
+
+/* GAMEBOY INTRo */
+
+
+#gameboyIntro {
+  width: 550px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+
+  animation: float 1.7s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translate(-50%, -50%); }
+  50% { transform: translate(-50%, -54%); }
+  100% { transform: translate(-50%, -50%); }
+}
+
+#gameboyIntro.sumir {
+  animation: zoomOut 0.9s forwards ease;
+}
+
+@keyframes zoomOut {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+}
+
+#conteudoSite.fadeIn {
+  animation: fadeIn 0.6s forwards ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+
+/* TÍTUL */
+
+.page-title {
+  font-family: "MinhaFonte";
+  font-size: 26px;
+  color: #763b9e;
+  text-shadow: 0 3px #f5dfff;
+  text-align: center;
+  margin-top: 40px;
+}
+
+
+
+/* LISTA DE JOGOS                               */
+
+#listaJogos {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 40px;
+  margin: 0 auto;
+  justify-content: center;
+  margin-top: 3%;
+}
+
+/* Card dos jogos */
+.card-jogo {
+  background: rgb(154, 146, 212);
+  padding: 15px;
+  border-radius: 16px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  transition: 0.25s ease;
+  aspect-ratio: 1 / 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.card-jogo img {
+  width: 100%;
+  border-radius: 12px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-jogo h3 {
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "MinhaFonte";
+  color: rgb(244, 251, 206);
+}
+
+.card-jogo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}

@@ -1,0 +1,315 @@
+@font-face {
+  font-family: "MinhaFonte";
+  src: url("/fonte/Daydream\ DEMO.otf") format("truetype");
+}
+
+
+body{
+  cursor: url('/img/magicwandnormal.png'), auto !important;
+}
+a:hover,
+button:hover,
+[onclick]:hover,
+.perfil-btn:hover,
+.jogos:hover,
+.celula:hover,
+#dificuldade:hover{
+  cursor: url('/img/magicwandclick.png'), pointer !important;
+}
+
+
+
+body {
+  font-family: "MinhaFonte", sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  
+  background-image: url("/img/select-background.png");
+  background-size: 100% 100%; 
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+.top-bar {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.top-bar h1 {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+  font-size: 28px;
+  color: #efffc2;
+}
+
+.voltar {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: 0.2s;
+  position: absolute;
+  top: 20px;     
+  left: 20px;    
+}
+
+.voltar img{
+  width: 70px; 
+}
+
+.voltar:hover {
+  transform: scale(1.05);
+}
+
+
+#dificuldade {
+  background-image: url("/img/button-select.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  border: none;            
+  outline: none;         
+  box-shadow: none;        
+  background-color: transparent;
+
+  padding: 12px 40px 12px 12px;
+  font-size: 20px;
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  border-radius: 0;       
+  margin-right: -30px;
+}
+
+
+#dificuldade img {
+  width: 250px;
+}
+
+
+
+.painel button {
+    background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#recomecar img{
+  width: 170px; 
+}
+.painel button:hover {
+   transform: scale(1.05);
+}
+
+
+:root {
+    --distancia-column: 90px;
+}
+
+.area-marrom {
+  width: 1000px;          
+  height: 450px;          
+  background-color: rgb(83, 61, 61);
+  background-size: cover; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  border-radius: 20px;
+  
+}
+
+
+
+/* Tabuleiro */
+#tabuleiro {
+    display: grid;
+    row-gap: 1%;
+    column-gap: var(--distancia-column);
+  justify-content: center; 
+  align-content: center;  
+  width: fit-content;       
+  height: fit-content;
+  margin-left: 0;
+    margin-right: 40px;
+}
+
+:root {
+    --tamanho-celula: 100px;
+}
+
+.celula {
+  width:var(--tamanho-celula);
+  height: var(--tamanho-celula);
+  background-size: cover;
+}
+
+.celula.revelada {
+   background-image: url("/img/glass_reveal.png") !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: calc(var(--tamanho-celula) * 0.2);
+  color: rgb(249, 255, 206);
+}
+
+.gato-img {
+  width: 145%;  
+  height: 145%;
+  object-fit: contain;
+  pointer-events: none; 
+}
+
+/* BLOQUINHOS DE GRAMA */
+
+.celula.fechada.grass-tl       { background-image: url("/img/grass_top_left.png"); }
+.celula.fechada.grass-t        { background-image: url("/img/grass_top.png"); }
+.celula.fechada.grass-tr       { background-image: url("/img/grass_top_right.png"); }
+
+.celula.fechada.grass-l        { background-image: url("/img/grass_left.png"); }
+.celula.fechada.grass-center   { background-image: url("/img/grass_center.png"); }
+.celula.fechada.grass-r        { background-image: url("/img/grass_right.png"); }
+
+.celula.fechada.grass-bl       { background-image: url("/img/grass_bottom_left.png"); }
+.celula.fechada.grass-b        { background-image: url("/img/grass_bottom.png"); }
+.celula.fechada.grass-br       { background-image: url("/img/grass_bottom_right.png"); }
+
+.painel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  background-color: rgb(207, 153, 234);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 40px;
+
+
+  width: 35%;
+  height: 30px; 
+
+  padding: 35px;
+  border-radius: 15px;
+  color: #efffc2;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+.painel span {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  font-size: 16px;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.popup-card {
+  background: #b4ffa9;
+  padding: 25px;
+  text-align: center;
+  border-radius: 18px;
+  max-width: 320px;
+  animation: pop 0.2s ease;
+  color: rgb(42, 116, 53);
+}
+
+.popup-img {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+#popup-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 2%;
+}
+
+#popup-btn img{
+  width: 200px; 
+}
+
+#popup-btn:hover {
+  transform: scale(1.05);
+}
+
+.flag-img {
+  width: 110%;
+  height: 110%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.btn-marcador {
+  position: fixed; /* fica sempre no cantinho */
+  bottom: 80px;
+  right: 80px;
+  bottom: 100px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.btn-marcador img {
+  width: 300%;
+  height: 300%;
+  object-fit: contain;
+}
+
+
+
+@keyframes pop {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+
+/* Responsivo */
+@media (max-width: 450px) {
+  .painel {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
