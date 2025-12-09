@@ -19,6 +19,7 @@ const livesDisplay = document.getElementById("lives");
 const startScreen = document.getElementById("startScreen");
 const startButton = document.getElementById("startButton");
 
+// MAPA DOS GATINHOS
 const gatosJogo = {
   gato1: "/img/blackiesat.png",
   gato2: "/img/gingersat.png",
@@ -29,23 +30,20 @@ const gatosJogo = {
 
 const id = localStorage.getItem("gatinhoID") || "gato1";
 const fotoGato = gatosJogo[id] || "/img/blackiesat.png";
-
 item.src = fotoGato;
 
+// Variáveis do jogo
 let score = 0;
 let lives = 3;
 let gameStarted = false;
-
 let playerX = gameBox.clientWidth / 2 - 60;
 let speed = 5;
-
 let itemY = -70;
 let itemX = Math.random() * (gameBox.clientWidth - 60);
-
 let moveLeft = false;
 let moveRight = false;
 
-// Controles do jogador
+// Controles
 document.addEventListener("keydown", (e) => {
   if (!gameStarted) return;
   if (e.key === "ArrowLeft" || e.key === "a") moveLeft = true;
@@ -136,7 +134,7 @@ async function loseLife() {
       "Fim de jogo! 😿",
       `Você fez ${score} pontos!`,
       fotoGato,
-      () => location.reload()
+      () => reiniciarJogo()
     );
 
     // Adicionar pontos no Firebase
@@ -144,13 +142,14 @@ async function loseLife() {
   }
 }
 
+// Reset do item
 function resetItem() {
   itemY = -70;
   itemX = Math.random() * (gameBox.clientWidth - 60);
   item.src = fotoGato;
 }
 
-// Popup
+// Função popup
 function mostrarPopup(titulo, mensagem, imagem, acaoBotao) {
   const pop = document.getElementById("popup");
   const img = document.getElementById("popup-img");
@@ -170,7 +169,17 @@ function mostrarPopup(titulo, mensagem, imagem, acaoBotao) {
   };
 }
 
-// Função para atualizar pontos no Firebase
+function reiniciarJogo() {
+  score = 0;
+  lives = 3;
+  scoreDisplay.textContent = "Pontos: 0";
+  livesDisplay.innerHTML = "❤️❤️❤️";
+  playerX = gameBox.clientWidth / 2 - 60;
+  itemY = -70;
+  itemX = Math.random() * (gameBox.clientWidth - 60);
+  gameStarted = true;
+}
+
 async function adicionarPontos(qtd) {
   const auth = window.auth;
   const db = window.db;
@@ -190,7 +199,6 @@ async function adicionarPontos(qtd) {
   if (novoTotal < 0) novoTotal = 0;
 
   await updateDoc(ref, { pontos: novoTotal });
-
   console.log("Pontos adicionados:", qtd, "→ Total:", novoTotal);
 }
 
