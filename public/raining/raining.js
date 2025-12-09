@@ -148,23 +148,24 @@ function iniciarJogo() {
   }
 
   function mostrarPopup(titulo, mensagem, imagem, acaoBotao) {
-    const pop = document.getElementById("popup");
-    const img = document.getElementById("popup-img");
-    const title = document.getElementById("popup-title");
-    const msg = document.getElementById("popup-msg");
-    const btn = document.getElementById("popup-btn");
+  const pop = document.getElementById("popup");
+  const img = document.getElementById("popup-img");
+  const title = document.getElementById("popup-title");
+  const msg = document.getElementById("popup-msg");
+  const btn = document.getElementById("popup-btn");
 
-    img.src = imagem;
-    title.textContent = titulo;
-    msg.textContent = mensagem;
+  img.src = imagem;
+  title.textContent = titulo;
+  msg.textContent = mensagem;
 
-    pop.classList.remove("hidden");
+  pop.classList.add("show"); 
 
-    btn.onclick = () => {
-      pop.classList.add("hidden");
-      if (acaoBotao) acaoBotao();
-    };
-  }
+  btn.onclick = () => {
+    pop.classList.remove("show");
+    if (acaoBotao) acaoBotao();
+  };
+}
+
 
   function reiniciarJogo() {
     score = 0;
@@ -202,3 +203,4 @@ function iniciarJogo() {
 
   loop();
 }
+
