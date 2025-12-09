@@ -133,7 +133,7 @@ function iniciarJogo() {
       gameStarted = false;
       mostrarPopup(
         "Fim de jogo! 😿",
-        `Você fez ${score} pontos!`,
+        `Conseguiu ${score} pontos!`,
         fotoGato,
         () => reiniciarJogo()
       );
@@ -203,4 +203,5 @@ function iniciarJogo() {
 
   loop();
 }
+
 
