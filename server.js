@@ -1,23 +1,6 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-
-const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_DOMINIO.firebaseapp.com",
-  projectId: "SEU_PROJECT_ID",
-  storageBucket: "SEU_BUCKET.appspot.com",
-  messagingSenderId: "SEU_SENDER_ID",
-  appId: "SEU_APP_ID"
-};
-
-
-const appFirebase = initializeApp(firebaseConfig);
-export const db = getFirestore(appFirebase);
-export const auth = getAuth(appFirebase);
 
 
 const app = express();
@@ -84,4 +67,5 @@ app.get("/ranking", (req, res) => {
 
 // Iniciar servidor
 app.listen(3000, () => console.log("Rodando em http://localhost:3000"));
+
 
