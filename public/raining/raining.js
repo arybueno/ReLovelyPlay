@@ -1,4 +1,17 @@
-const gameBox = document.getElementById("game"); 
+import { doc, getDoc, updateDoc } 
+  from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+import { onAuthStateChanged } 
+  from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+
+// Espera o Firebase carregar
+const wait = setInterval(() => {
+  if (window.auth && window.db) {
+    clearInterval(wait);
+    iniciarJogo();
+  }
+}, 50);
+
+const gameBox = document.getElementById("game");
 const player = document.getElementById("player");
 const item = document.getElementById("item");
 const scoreDisplay = document.getElementById("score");
@@ -6,7 +19,6 @@ const livesDisplay = document.getElementById("lives");
 const startScreen = document.getElementById("startScreen");
 const startButton = document.getElementById("startButton");
 
-// MAPA DOS GATINHOS DO JOGO (sentadinhos)
 const gatosJogo = {
   gato1: "/img/blackiesat.png",
   gato2: "/img/gingersat.png",
@@ -15,7 +27,7 @@ const gatosJogo = {
   gato5: "/img/whiteysat.png"
 };
 
-const id = localStorage.getItem("gatinhoID");
+const id = localStorage.getItem("gatinhoID") || "gato1";
 const fotoGato = gatosJogo[id] || "/img/blackiesat.png";
 
 item.src = fotoGato;
@@ -33,7 +45,7 @@ let itemX = Math.random() * (gameBox.clientWidth - 60);
 let moveLeft = false;
 let moveRight = false;
 
-// controles
+// Controles do jogador
 document.addEventListener("keydown", (e) => {
   if (!gameStarted) return;
   if (e.key === "ArrowLeft" || e.key === "a") moveLeft = true;
@@ -51,17 +63,16 @@ startButton.addEventListener("click", () => {
   gameStarted = true;
 });
 
+// Funções do jogo
 function updatePlayer() {
   if (moveLeft) playerX -= 8;
   if (moveRight) playerX += 8;
 
-  const maxX = gameBox.clientWidth - 120; // limite da caixinha
+  const maxX = gameBox.clientWidth - 120;
   playerX = Math.max(0, Math.min(maxX, playerX));
-
   player.style.left = playerX + "px";
 }
 
-// hitbox do player
 function getPlayerHitbox() {
   const p = player.getBoundingClientRect();
   const g = gameBox.getBoundingClientRect();
@@ -86,17 +97,10 @@ function getItemHitbox() {
   };
 }
 
-// colisão AABB
 function checkCollision(p, i) {
-  return !(
-    p.right < i.left ||
-    p.left > i.right ||
-    p.bottom < i.top ||
-    p.top > i.bottom
-  );
+  return !(p.right < i.left || p.left > i.right || p.bottom < i.top || p.top > i.bottom);
 }
 
-// atualizar item
 function updateItem() {
   const currentSpeed = speed + Math.floor(score / 5);
   itemY += currentSpeed;
@@ -107,14 +111,12 @@ function updateItem() {
   const pHitbox = getPlayerHitbox();
   const iHitbox = getItemHitbox();
 
-  // pegou
   if (checkCollision(pHitbox, iHitbox)) {
     score++;
     scoreDisplay.textContent = "Pontos: " + score;
     resetItem();
   }
 
-  // caiu no chão da telinha
   const itemHeight = item.offsetHeight;
   if (itemY > gameBox.clientHeight - itemHeight) {
     loseLife();
@@ -122,25 +124,77 @@ function updateItem() {
   }
 }
 
-// perder vida
-function loseLife() {
+async function loseLife() {
   lives--;
   livesDisplay.innerHTML = "❤️".repeat(lives);
 
   if (lives <= 0) {
-    alert("Fim de jogo! Pontos: " + score);
-    location.reload();
+    gameStarted = false;
+
+    // Mostrar popup
+    mostrarPopup(
+      "Fim de jogo! 😿",
+      `Você fez ${score} pontos!`,
+      fotoGato,
+      () => location.reload()
+    );
+
+    // Adicionar pontos no Firebase
+    await adicionarPontos(score);
   }
 }
 
-// reset item
 function resetItem() {
   itemY = -70;
   itemX = Math.random() * (gameBox.clientWidth - 60);
   item.src = fotoGato;
 }
 
-// loop principal
+// Popup
+function mostrarPopup(titulo, mensagem, imagem, acaoBotao) {
+  const pop = document.getElementById("popup");
+  const img = document.getElementById("popup-img");
+  const title = document.getElementById("popup-title");
+  const msg = document.getElementById("popup-msg");
+  const btn = document.getElementById("popup-btn");
+
+  img.src = imagem;
+  title.textContent = titulo;
+  msg.textContent = mensagem;
+
+  pop.classList.remove("hidden");
+
+  btn.onclick = () => {
+    pop.classList.add("hidden");
+    if (acaoBotao) acaoBotao();
+  };
+}
+
+// Função para atualizar pontos no Firebase
+async function adicionarPontos(qtd) {
+  const auth = window.auth;
+  const db = window.db;
+
+  let user = auth.currentUser;
+  if (!user) return;
+
+  const ref = doc(db, "usuarios", user.uid);
+  const dados = await getDoc(ref);
+
+  let pontos = 0;
+  if (dados.exists() && typeof dados.data().pontos === "number") {
+    pontos = dados.data().pontos;
+  }
+
+  let novoTotal = pontos + qtd;
+  if (novoTotal < 0) novoTotal = 0;
+
+  await updateDoc(ref, { pontos: novoTotal });
+
+  console.log("Pontos adicionados:", qtd, "→ Total:", novoTotal);
+}
+
+// Loop principal
 function loop() {
   if (gameStarted) {
     updatePlayer();
