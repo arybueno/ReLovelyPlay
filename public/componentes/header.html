@@ -8,6 +8,45 @@
     <link rel="stylesheet" href="/componentes/header.css">
 </head>
 
+    <script>
+  const audio = document.getElementById("musicaFundo");
+  const btnSom = document.getElementById("btnSom");
+  const imgSom = document.getElementById("imgSom");
+
+  // Se já estava tocando na página anterior
+  if (localStorage.getItem("musicaAtiva") === "true") {
+    audio.currentTime = Number(localStorage.getItem("musicaTempo")) || 0;
+    audio.play().catch(() => {});
+    imgSom.src = "/img/som_on.png";
+  }
+
+  // Atualiza o tempo da música a cada 500ms
+  setInterval(() => {
+    localStorage.setItem("musicaTempo", audio.currentTime);
+  }, 500);
+
+  // Primeira interação do usuário (obrigatória pelos navegadores)
+  window.addEventListener("click", () => {
+    if (audio.paused && localStorage.getItem("musicaAtiva") === "true") {
+      audio.play().catch(() => {});
+    }
+  }, { once: true });
+
+  // --- BOTÃO PLAY/PAUSE ---
+  btnSom.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+      localStorage.setItem("musicaAtiva", "true");
+      imgSom.src = "/img/som_on.png";
+    } else {
+      audio.pause();
+      localStorage.setItem("musicaAtiva", "false");
+      imgSom.src = "/img/som_off.png";
+    }
+  });
+</script>
+
+
 <body>
 <header>
   <div id="teste">
@@ -42,5 +81,6 @@
 
 </body>
 </html>
+
 
 
