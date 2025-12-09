@@ -77,6 +77,7 @@ window.salvarPerfil = async function () {
 
 window.logout = function () {
   signOut(auth).then(() => {
-    window.location.href = "/login/login.html";
+    window.location.href = "/login";
   });
 }
+
