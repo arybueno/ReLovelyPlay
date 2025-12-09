@@ -4,35 +4,64 @@
     <meta charset="UTF-8">
     <title>Seu Site</title>
 
-    <!-- CSS vindo da pasta public -->
     <link rel="stylesheet" href="/componentes/header.css">
 </head>
 
-    <script>
+<body>
+
+<audio id="musicaFundo" src="/musica.mp3" loop></audio>
+
+<header>
+  <div id="teste">
+    
+    <button class="voltar" onclick="window.location.href='/'">
+      <img id="logo" src="/img/gameboy.png" alt="">
+    </button>
+
+    <div id="botaoPerfil" class="perfil-btn">
+      <img id="fotoPerfil" class="foto" src="" alt="">
+      <span id="nomePerfil"></span>
+    </div>
+
+  </div>
+
+  <div id="pontosUsuario" class="pontos"></div>
+
+  <button id="ranking-btn" onclick="window.location.href='/ranking'">
+    <img src="/img/rankingbutton.png" alt="">
+  </button>
+
+  <!-- 🔊 BOTÃO PLAY/PAUSE -->
+  <button id="btnSom">
+    <img id="imgSom" src="/img/som_off.png" alt="">
+  </button>
+</header>
+
+<script>
   const audio = document.getElementById("musicaFundo");
   const btnSom = document.getElementById("btnSom");
   const imgSom = document.getElementById("imgSom");
 
-  // Se já estava tocando na página anterior
+  // Se estava tocando na página anterior
   if (localStorage.getItem("musicaAtiva") === "true") {
     audio.currentTime = Number(localStorage.getItem("musicaTempo")) || 0;
     audio.play().catch(() => {});
     imgSom.src = "/img/som_on.png";
   }
 
-  // Atualiza o tempo da música a cada 500ms
+  // Guardar tempo da música
   setInterval(() => {
     localStorage.setItem("musicaTempo", audio.currentTime);
   }, 500);
 
-  // Primeira interação do usuário (obrigatória pelos navegadores)
+  // Primeira interação
   window.addEventListener("click", () => {
     if (audio.paused && localStorage.getItem("musicaAtiva") === "true") {
-      audio.play().catch(() => {});
+      audio.play().catch(()=>{});
     }
   }, { once: true });
 
-  // --- BOTÃO PLAY/PAUSE ---
+  // Botão play/pause
   btnSom.addEventListener("click", () => {
     if (audio.paused) {
       audio.play();
@@ -46,41 +75,8 @@
   });
 </script>
 
-
-<body>
-<header>
-  <div id="teste">
-    
-    <!-- Botão voltar → agora vai para rota "/" -->
-    <button class="voltar" onclick="window.location.href='/'">
-      <img id="logo" src="/img/gameboy.png" alt="">
-    </button>
-
-    <!-- Botão do perfil -->
-    <div id="botaoPerfil" class="perfil-btn">
-      <img id="fotoPerfil" class="foto" src="" alt="">
-      <span id="nomePerfil"></span>
-    </div>
-
-  </div>
-
-  <div id="pontosUsuario" class="pontos"></div>
-
-  <!-- Botão ranking → agora rota "/ranking" -->
-  <button id="ranking-btn" onclick="window.location.href='/ranking'">
-    <img src="/img/rankingbutton.png" alt="">
-  </button>
-
-  <!-- Botão som -->
-  <button id="btnSom">
-    <img id="imgSom" src="/img/som_off.png" alt="">
-  </button>
-</header
-     <script type="module" src="/firebase-init.js"></script>
-     <script type="module" src="/componentes/headerdata.js"></script>
+<script type="module" src="/firebase-init.js"></script>
+<script type="module" src="/componentes/headerdata.js"></script>
 
 </body>
 </html>
-
-
-
