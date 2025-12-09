@@ -4,5 +4,6 @@ fetch("/componentes/header.html")
   .then(html => {
     document.getElementById("header-placeholder").innerHTML = html;
 
-    import("/componentes/headerData.js");
+    import("/componentes/headerdata.js");
   });
+
