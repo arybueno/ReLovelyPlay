@@ -184,15 +184,17 @@ body {
 
 /* Botão do popup */
 #popup-btn {
-  padding: 8px 15px;
-  margin-top: 15px;
+   background: none;
   border: none;
-  background-color: #246aff;
-  color: white;
-  font-weight: bold;
-  border-radius: 5px;
+  padding: 0;
   cursor: pointer;
+  transition: 0.2s;
 }
+
+#popup-btn img{
+  width: 170px; 
+}
+
 
 
 
