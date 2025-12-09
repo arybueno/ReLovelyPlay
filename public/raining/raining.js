@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const id = localStorage.getItem("gatinhoID") || "gato1";
-    const fotoGato = gatosJogo[id] || "./img/blackiesat.png";
+    const fotoGato = gatosJogo[id] || "/img/blackiesat.png";
     item.src = fotoGato;
 
     let score = 0;
@@ -210,4 +210,5 @@ document.addEventListener("DOMContentLoaded", () => {
     loop();
   }
 });
+
 
