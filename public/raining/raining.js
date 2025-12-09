@@ -30,11 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const gatosJogo = {
-      gato1: "./img/blackiesat.png",
-      gato2: "./img/gingersat.png",
-      gato3: "./img/manchalamarromsat.png",
-      gato4: "./img/manchinhabegesat.png",
-      gato5: "./img/whiteysat.png"
+      gato1: "/img/blackiesat.png",
+      gato2: "/img/gingersat.png",
+      gato3: "/img/manchalamarromsat.png",
+      gato4: "/img/manchinhabegesat.png",
+      gato5: "/img/whiteysat.png"
     };
 
     const id = localStorage.getItem("gatinhoID") || "gato1";
@@ -210,3 +210,4 @@ document.addEventListener("DOMContentLoaded", () => {
     loop();
   }
 });
+
