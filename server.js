@@ -14,8 +14,6 @@ function render(pagina) {
   return path.join(__dirname, "views", pagina);
 }
 
-// ---------------- ROTAS ------------------ //
-
 app.get("/", (req, res) => {
   res.sendFile(render("index.html"));
 });
@@ -63,9 +61,7 @@ app.get("/ranking", (req, res) => {
   res.sendFile(render("ranking.html"));
 });
 
-// ----------------------------------------- //
-
-// Iniciar servidor
 app.listen(3000, () => console.log("Rodando em http://localhost:3000"));
+
 
 
